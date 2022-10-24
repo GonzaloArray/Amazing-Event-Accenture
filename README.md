@@ -1,5 +1,4 @@
-```
-    <h1>Amazing Event</h1>
-```
+<h1>Amazing Event</h1>
+
 
 ### Detalles del proyecto
