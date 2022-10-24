@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Details</title>
+
+	<link rel="shortcut icon" href="../img/Logo Amazing Events.png" type="image/x-icon">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Roboto+Condensed:wght@300;400;700&display=swap"
+		rel="stylesheet">
+
+	<script src="https://kit.fontawesome.com/eadeaa3284.js" crossorigin="anonymous"></script>
+
+	<!-- CSS only -->
+	<link rel="stylesheet" href="../css/style.css" />
+
+	<!-- Bootstrap 5 css -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body class="bg-page">
+
+	<div id="app" class="d-flex flex-column justify-content-between viewport">
+		<header>
+			<nav class="navbar navbar-expand-lg bg-dark">
+				<div class="container-fluid container-lg">
+					<a class="navbar-brand logo" href="../index.html">Amanzing events</a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+						data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+						aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+						<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+							<li class="nav-item">
+								<a class="nav-link" aria-current="page" href="../index.html">Home</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="./upcoming.html">Upcoming Events</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="./pastEvent.html">Past Event</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="./contact.html">Contact</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="./stast.html">Stats</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<h1 class="title text-center fw-bold "></h1>
+		<div class="container-card container">
+			<div class="row d-flex justify-content-evenly align-items-center bg-light rounded">
+				<div class="col-12 col-md-6 col-lg-6 m-0 p-0">
+					<img :src="event.image" class="card-img-top" :alt="event.name">
+				</div>
+				<div class="col-12 col-md-6 col-lg-6 text-center texto">
+					<h2 class="fw-bold">{{event.name}}</h2>
+					<p class="">{{event.description}}</p>
+					<div class="d-flex justify-content-evenly align-items-center">
+						<div class="d-flex align-items-center justify-content-center">
+							<i class="fa-solid fa-money-bill-wave text-success"></i>
+							<p class="text-dark fs-5 m-0 ps-2 fw-bold">${{event.price}} </p>
+						</div>
+						<div class="text-primary d-flex align-items-center">
+							<i class="fa-solid fa-user"></i>
+							<p class="ms-2 my-0">{{event.capacity}}</p>
+						</div>
+					</div>
+					<p class="fw-bold mt-2">
+						<span>
+							<i class="fa-solid fa-ticket text-warning"></i>
+							{{event.capacity - event.assistance > 0 ? "Available":"Tickets sold out"}}
+						</span>
+					</p>
+
+					<p class="px-5 py-3 bg-dark mt-4 text-light">{{event.currentDate > event.date?"Past":"Comming"}}: <span
+							class="fw-bold">{{event.date}}</span></p>
+
+					<p class="fw-bold text-primary mt-5">Category: <span class="text-dark">{{event.category}}</span></p>
+				</div>
+			</div>
+		</div>
+
+		<!-- footer -->
+		<footer class="bg-dark py-3">
+			<section class="container-lg container-fluid d-flex justify-content-between align-items-center">
+				<div class="d-flex">
+					<a href="" class="nav-link fs-2 me-3"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+					<a href="" class="nav-link fs-2 me-3"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+					<a href="" class="nav-link fs-2"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+				</div>
+				<h2 class="text-light">Cohort</h2>
+			</section>
+		</footer>
+	</div>
+
+	<!-- JavaScript Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+		crossorigin="anonymous"></script>
+
+	<script src="../js/index.js"></script>
+</body>
+
+</html>

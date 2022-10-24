@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amanzing Event</title>
+
+	<link rel="shortcut icon" href="../img/Logo Amazing Events.png" type="image/x-icon" />
+
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Roboto+Condensed:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/eadeaa3284.js" crossorigin="anonymous"></script>
+
+
+    <!-- Bootstrap 5 Css-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Script cdn -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="bg-page">
+    <div id="app" class=" d-flex flex-column justify-content-between viewport">
+        <header>
+            <nav class="navbar navbar-expand-lg bg-dark py-3">
+                <div class="container-fluid container-lg">
+                    <a class="navbar-brand logo" href="../index.html">Amanzing events</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="../index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./upcoming.html">Upcoming Events</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="./pastEvent.html">Past Event</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./contact.html">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./stast.html">Stats</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <!-- Main -->
+        <main class="flex-auto container-lg container-fluid p-0">
+
+            <!-- Carousel -->
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active position-relative">
+                        <img src="../img/jurassicWord.jpg" class="d-block viewportCarousel border border-2 border-dark"
+                            alt="jurasicc word">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../img/hockeySport.jpg" class="d-block viewportCarousel border border-2 border-dark"
+                            alt="Event Sport">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../img/foodMenu.jpg" class="d-block viewportCarousel border border-2 border-dark"
+                            alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-light fs-1 fw-bold text-uppercase text-center p-3 mt-4">Amanzing Event</h1>
+
+            <!-- Error -->
+            <div v-if="error">
+                <h2 class="fw-bold text-center mb-5">{{error}}</h2>
+            </div>
+
+            <!-- Checkbox and search -->
+            <section v-else class="container-fluid container-lg py-md-4">
+                <section class="d-flex justify-content-between align-items-center row">
+                    <div class="mb-3 col-12 input-all">
+                        <input v-model="search" type="text" required class="form-control input" id="searchInput">
+                        <label for="searchInput" class="form-label input-label">Search...</label>
+                    </div>
+                    <div id="checkbox" class="col-12 py-4 py-md-0">
+                        <div class="d-flex justify-content-evenly m-lg-auto">
+                            <div v-for="rol in roles" class="form-check ">
+                                <input v-model="rolesBuscados" class="form-check-input ms-2 ms-sm-0" :id="rol" :name="rol" type="checkbox"
+                                    :value="rol">
+                                <label :for="rol" class="ms-2 ms-sm-1 form-check-label">
+                                    {{rol}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </main>
+
+        <!-- Cards -->
+        <section class="container-fluid container-lg pb-5 flex-auto1">
+            <div id="card-content" class="indexCard d-flex wrapper d-flex justify-content-center">
+                <div v-if="eventosUpcoming.length === 0" class="text-center">
+                    <img class="notFound" :src="imgNoResultHTML" alt="not found" />
+                    <p class="text-dark rounded bg-light px-3 py-1 fw-bold fs-3">Not found events</p>
+                </div>;
+                <div v-for="event in eventosPast" class="bg-light m-2 card-width card-hover">
+                    <img :src="event.image" class="card-img-top imgFit" :alt="event.name">
+                    <div class="d-flex justify-content-between flex-column p-2 texto">
+                        <h5 class="card-title fw-bold text-uppercase">{{event.name}}</h5>
+                        <p class="card-text">Category: {{event.category}}</p>
+                        <div class="d-flex justify-content-evenly align-items-center">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <i class="fa-solid fa-money-bill-wave text-success"></i>
+                                <p class="text-dark fs-5 m-0 ps-2 fw-bold">$ {{event.price}}</p>
+                            </div>
+                            <div class="text-primary">
+                                <i class="fa-solid fa-user"></i>
+                                {{event.capacity}}
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <a target="_blank" href=""
+                                :class="event.date > currentDate ? 'effectBuy rounded-pill d-block btn mt-4 btn-success fw-bold text-uppercase':'pastDisable effectBuy rounded-pill d-block btn mt-4 btn-success fw-bold text-uppercase' ">Buy <i
+                                    class="ms-2 fa-solid fa-arrow-right"></i></a>
+                            <a target="_blank" href=""
+                                class="effectBuy rounded-pill d-block btn mt-4 btn-primary fw-bold text-uppercase">More info
+                                <i class="ms-2 fa-solid fa-arrow-right"></i></a>
+                            <p class="text-center py-3 bg-dark mt-4 text-light">{{}} <span class="fw-bold">{{event.date > currentDate? "Upcoming": "Past"}}: {{event.date}}</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-dark py-3">
+            <section class="container-lg container-fluid d-flex justify-content-between align-items-center">
+                <div class="d-flex hover">
+                    <a href="" class="nav-link fs-2 me-3"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    <a href="" class="nav-link fs-2 me-3"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a href="" class="nav-link fs-2"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+                </div>
+                <h2 class="text-light">Cohort</h2>
+            </section>
+        </footer>
+    </div>
+
+    <!-- Bootstrap 5 Js-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- script -->
+    <script src="../js/index.js"></script>
+</body>
+
+</html>
