@@ -29,6 +29,8 @@ createApp({
                 estadisticasPast: [],
             },
             error: "",
+            backupPast: [],
+            backupUpcoming: [],
         }
     },
     /* Esto se ejecuta en el momento que estamos creando */
@@ -192,8 +194,10 @@ createApp({
     computed: {
         superFiltro() {
             let filtro1 = this.backup.filter(event => event.name.toLowerCase().includes(this.search.toLowerCase()));
+
             // Upcoming
             let filtro1upcoming = this.backupUpcoming.filter(event => event.name.toLowerCase().includes(this.search.toLowerCase()));
+
             // Past
             let filtro1past = this.backupPast.filter(event => event.name.toLowerCase().includes(this.search.toLowerCase()));
 
@@ -203,11 +207,12 @@ createApp({
 
             let filtro2past = filtro1past.filter(event => this.rolesBuscados.includes(event.category));
 
-            if (filtro2.length > 0 || filtro2past.length > 0 || filtro2upcoming.length > 0) {
+
+            if ((filtro2.length || this.rolesBuscados.length > 0)  || (filtro2past.length > 0 || this.rolesBuscados.length > 0) || (filtro2upcoming.length > 0 || this.rolesBuscados.length > 0)) {
                 this.eventos = filtro2;
                 this.eventosUpcoming = filtro2upcoming;
                 this.eventosPast = filtro2past;
-            } else {
+            } else if(filtro1.length > 0) {
                 this.eventos = filtro1;
                 this.eventosUpcoming = filtro1upcoming;
                 this.eventosPast = filtro1past;
