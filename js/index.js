@@ -213,14 +213,14 @@ createApp({
                 this.eventosPast = filtro1past;
             }
         },
-        cestaTotal: function () {
+        cestaTotal() {
             let suma = 0;
             for (key in this.cesta) {
                 suma = suma + (this.cesta[key].curso.price * this.cesta[key].cant);
             }
             return suma;
         },
-        cantTotal: function () {
+        cantTotal() {
             let cant = 0;
             for (key in this.cesta) {
                 cant = cant + this.cesta[key].cant;
