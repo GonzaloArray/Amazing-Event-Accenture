@@ -188,8 +188,6 @@ createApp({
             this.cesta = valor;
             localStorage.setItem('event', JSON.stringify(this.cesta));
         }
-
-
     },
     computed: {
         superFiltro() {

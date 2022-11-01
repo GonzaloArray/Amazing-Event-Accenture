@@ -297,7 +297,7 @@ th {
 @media (min-width: 768px) {
     .positionCard{
         position: absolute;
-        right: 25%;
+        right: 50%;
     }
     .widhtCard{
         width: 22rem!important;
